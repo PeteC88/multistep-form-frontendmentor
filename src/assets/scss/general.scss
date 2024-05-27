@@ -1,0 +1,42 @@
+*,::after,::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+body{
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: $magnolia;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.container{
+    height: 100svh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 155px 1fr 64px;
+
+    @include for-tablet-landscape-up {
+        grid-template-columns: 35% 65%;
+        grid-template-rows: 1fr 64px;;
+
+    }
+}
+
+
+

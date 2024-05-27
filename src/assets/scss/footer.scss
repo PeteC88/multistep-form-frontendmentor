@@ -1,0 +1,38 @@
+footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 4rem;
+    background-color: white;
+}
+
+.footer__btn{
+    width: 80px;
+    height: 35px;
+    background-color: $marine-blue;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.footer__btn-prev{
+    color: $cool-gray;
+    background-color: transparent;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.footer__btn-prev--active{
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.confirm-button{
+    background-color: $purplish-blue;
+}

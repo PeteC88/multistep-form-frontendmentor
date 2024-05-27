@@ -1,0 +1,46 @@
+//Variables media queries
+$small-mobile: 376px;
+$small-mobile-height:670px;
+$tablet-portrait: 600px;
+$tablet-landscape: 900px;
+$desktop: 1200px;
+$large-desktop: 1800px;
+
+//Mixins media queries
+
+@mixin for-mobile-landscape{
+  @media (max-width: $tablet-landscape) and (max-height: $tablet-portrait) {
+    @content; 
+   }
+}
+
+@mixin for-small-mobile-down{
+  @media (max-width: $small-mobile ) and (max-height: $small-mobile-height){
+    @content; 
+   }
+}
+
+
+@mixin for-tablet-portrait-up {
+  @media (min-width: $tablet-portrait) {
+     @content; 
+    }
+}
+
+@mixin for-tablet-landscape-up {
+  @media (min-width: $tablet-landscape) {
+     @content; 
+    }
+}
+
+@mixin for-desktop-up {
+  @media (min-width: $desktop) { 
+    @content; 
+  }
+}
+
+@mixin for-big-desktop-up {
+  @media (min-width: $large-desktop) {
+     @content; 
+    }
+}
