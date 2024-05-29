@@ -11,6 +11,8 @@
     
     @include for-tablet-landscape-up{
         grid-area: 1/2/-1/-1;
+        width: 75%;
+        top: 50px;
     }
 }
 
@@ -36,10 +38,14 @@
 
     & p.form-cotainer__description{
         width: 90%;
+
+        @include for-tablet-landscape-up{
+            width: 100%;
+        }
     }
     & .form__plan--free-months{
         color: $marine-blue;
-        font-weight: 500;
+        font-weight: 300;
     }
 }
 .form-inputs{
@@ -51,33 +57,113 @@
         margin-bottom: 0.2rem;
         font-size: 0.9rem;
         font-weight: 500;
+        display: flex;
+        justify-content: space-between;
+
+        @include for-tablet-landscape-up {
+                font-size: 1rem;
+            }
+
+        & > .error-message{
+            display: none;
+
+            &--active{
+                display: block;
+                color: red;
+            }
+        }
     }
     & input{
         margin-bottom: 1rem;
         padding: 0.7rem;
         border: 1px solid $light-gray;
         border-radius: 5px;
+        cursor: pointer;
+
+        &:hover, &:focus{
+            outline: 0.5px solid $purplish-blue;
+        }
 
         &::placeholder{
             font-weight: bold;
             color: $cool-gray;
+
+            @include for-tablet-landscape-up {
+                font-size: 1rem;
+            }
+        }
+
+        &.input--error{
+            outline: 0.5px solid red;
+        }
+
+        @include for-tablet-landscape-up {
+            padding: 1rem;
         }
     }
 }
 
-.form-inputs.step2 ul li{
-    border-radius: 5px;
-    margin-bottom: 0.8rem;
-    padding: 0.8rem;
-    display: flex;
-    gap: 1rem;
+.form-inputs.step2 ul {
+    
+    @include for-tablet-landscape-up {
+            display: grid;
+            /* give the same width to the columns */
+            grid-auto-columns: minmax(0, 200px);
+            grid-template-areas: "plan1 plan2 plan3"
+                                  "toggle toggle toggle";
+            gap: 1rem;
+    }
 
-   @include for-small-mobile-down{
-    margin-bottom: 0.4rem;
-    padding: 0.4rem;
-   }
+    & li {
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+            padding: 0.8rem;
+            display: flex;
+            gap: 1rem;
 
+            @include for-small-mobile-down {
+                margin-bottom: 0.4rem;
+                padding: 0.4rem;
+            }
+
+            @include for-tablet-landscape-up {
+                padding: 0.6rem;
+                margin-bottom: 0.4rem;
+                flex-direction: column;
+            }
+
+            &:nth-child(1) {
+                grid-area: plan1;
+            }
+
+            &:nth-child(2) {
+                grid-area: plan2;
+            }
+
+            &:nth-child(3) {
+                grid-area: plan3;
+            }
+
+            &:nth-child(4) {
+                grid-area: toggle;
+
+                @include for-tablet-landscape-up{
+                    flex-direction: row;
+                }
+            }
+
+        }
+
+        & h4{
+            padding-bottom: 8px;
+            @include for-tablet-landscape-up{
+                padding-top: 50px;
+            }
+        }
 }
+
+
+
 
 .form__plan{
     cursor: pointer;
@@ -100,7 +186,11 @@
     background-color: $magnolia;
     padding: 10px;
     margin-top: 1.5rem;
-   
+
+    @include for-tablet-landscape-up{
+    margin-top: 0.5rem;
+    }
+
 }
 
 .form__plan--monthly-yearly button{
@@ -109,6 +199,7 @@
     border: none;
     color: $cool-gray;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .monthly-year-toogle.toggle-point{
@@ -238,6 +329,13 @@
         padding: 1rem;
     }
 }
+
+.last-check__total > p.total__price{
+    font-size: 1.2rem;
+    color: $purplish-blue;
+    font-weight: bold;
+}
+
 .last-check__plan{
     border-bottom: 1px solid $cool-gray;
     display: flex;

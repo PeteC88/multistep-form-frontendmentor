@@ -7,31 +7,38 @@
                 <section class="form-inputs step2" aria-label="step2 plan choise">
                     <ul role="radiogroup" aria-label="plan choise">
                         <!-- li are set as radio buttons  -->
-                        <li v-for="plan in formStore.plans" role="radio" :aria-checked="plan.isSelected" class="form__plan form__plan--radio" aria-label="Arcade plan"  tabindex="0" @click="emit('choosePlanAction', plan.id)" @keydown="emit('choosePlanAction', plan.id)">
+                        <li v-for="plan in formStore.plans" role="radio" :aria-checked="plan.isSelected"
+                            class="form__plan form__plan--radio" aria-label="Arcade plan" tabindex="0"
+                            @click="emit('choosePlanAction', plan.id)" @keydown="emit('choosePlanAction', plan.id)">
                             <picture>
-                                <img :src="`./src/assets/imgs/${plan.icon}`" :alt="`icon ${plan.name.toLocaleLowerCase()} plan`">
+                                <img :src="`./src/assets/imgs/${plan.icon}`"
+                                    :alt="`icon ${plan.name.toLocaleLowerCase()} plan`">
                             </picture>
                             <div>
                                 <h4>
                                     {{plan.name}}
                                 </h4>
                                 <p>
-                                    {{`$${plan.priceParMonth}/mo`}}
+                                    {{ userPlanChosen.plan.isMonthly ? `$${plan.priceParMonth}/mo` :
+                                    `$${plan.priceParMonth * formStore.nbOfPayingMonthsPerYear}/yr`}}
                                 </p>
-                                <p class="form__plan--free-months">
+                                <p class="form__plan--free-months" v-if="!userPlanChosen.plan.isMonthly">
                                     2 months free
                                 </p>
                             </div>
                         </li>
                         <li class="form__plan--monthly-yearly" aria-label="monthly to yearly switcher button">
-                            <button :class="{'monthly-plan': userPlanChosen.plan.isMonthly}" @click="emit('choseMonthlyPlan')">Monthly</button>
-                    <p role="button" class="monthly-year-toogle toggle-point" :class="{'yearly--active' :userPlanChosen.plan.isYearly }"></p>
-                            <button :class="{'yearly-plan': userPlanChosen.plan.isYearly}" @click="emit('choseYarlyPlan')">Yearly</button>
+                            <button :class="{'monthly-plan': userPlanChosen.plan.isMonthly}"
+                                @click="emit('choseMonthlyPlan')">Monthly</button>
+                            <p role="button" class="monthly-year-toogle toggle-point"
+                                :class="{'yearly--active' :userPlanChosen.plan.isYearly }"></p>
+                            <button :class="{'yearly-plan': userPlanChosen.plan.isYearly}"
+                                @click="emit('choseYarlyPlan')">Yearly</button>
                         </li>
                     </ul>
-                    
+
                 </section>
-            </section>     
+            </section>
         </card>
     </section>
 </template>

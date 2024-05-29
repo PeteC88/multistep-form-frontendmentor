@@ -14,7 +14,14 @@ ul li {
     list-style-type: none;
 }
 
+input[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+}
+
 body{
+    height: 100svh;
     font-family: "Ubuntu", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -24,17 +31,33 @@ body{
     font-style: normal;
 }
 
+#app{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+form{
+    width: 100%;
+}
 .container{
+    position: relative;
     height: 100svh;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 155px 1fr 64px;
+    border-radius: 10px;
 
     @include for-tablet-landscape-up {
+        padding: 0 20px;
+        margin: auto;
+        background-color: white;
+        width: 80%;
+        height: 90svh;
         grid-template-columns: 35% 65%;
-        grid-template-rows: 1fr 64px;;
-
+        grid-template-rows: 1fr 80px;
     }
 }
 

@@ -1,26 +1,29 @@
 <template>
-    <main class="container">
-        <NavSteps 
-        :currentStep="currentStep"/>
-          <!--   <Transition > -->
-                <KeepAlive>
-                    <Step1 v-if="currentStep === 1"/>
-                </KeepAlive>
-                <KeepAlive>
-                    <Step2  v-if="currentStep === 2" @choosePlanAction="choosePlanAction" @choseMonthlyPlan="chooseMonthlyPlan" @choseYarlyPlan="chooseYearlyPlan"/>
-                </KeepAlive>
-                <KeepAlive>
-                    <Step3  v-if="currentStep === 3" @select-plan="selectPlanAddOn"/>
-                </KeepAlive>
-                <!-- This component no need to be keeped alive so it can recalculate each time if the plan is yearly or not -->
-                <Step4  v-if="currentStep === 4"  @changePlanAction="changePlan"/>
-                <TheConfirmation v-if="currentStep === 5" />
-           <!--  </Transition> -->
-        
+    <form @submit.prevent="">
+        <main class="container">
+            <NavSteps :currentStep="currentStep" />
+            <!--   <Transition > -->
+            <KeepAlive>
+                <Step1 v-if="currentStep === 1" :nextStepClicked="nextStepClicked" />
+            </KeepAlive>
+            <KeepAlive>
+                <Step2 v-if="currentStep === 2" @choosePlanAction="choosePlanAction"
+                    @choseMonthlyPlan="chooseMonthlyPlan" @choseYarlyPlan="chooseYearlyPlan" />
+            </KeepAlive>
+            <KeepAlive>
+                <Step3 v-if="currentStep === 3" @select-plan="selectPlanAddOn" />
+            </KeepAlive>
+            <!-- This component no need to be keeped alive so it can recalculate each time if the plan is yearly or not -->
+            <Step4 v-if="currentStep === 4" @changePlanAction="changePlan" />
+            <TheConfirmation v-if="currentStep === 5" />
+            <!--  </Transition> -->
 
-        <Footer @nextStepAction="nextStepAction()" @prevStepAction="prevStepAction()" :currentStep="currentStep "/>
-    </main>
-    
+
+            <Footer @nextStepAction="nextStepAction()" @prevStepAction="prevStepAction()" :currentStep="currentStep" />
+
+        </main>
+    </form>
+
 </template>
 
 <script setup lang="ts">
@@ -41,12 +44,14 @@ const userPlanChosen = formStore.userPlanChosen;
 
 
 let currentStep = ref(1);
+let nextStepClicked = ref(false);
 
-
+//const changeNextClickEvent = () => nextStepClicked.value = false;
 
 const prevStepAction = ()=>{
 
-    if(currentStep.value > 1){
+    if (currentStep.value > 1) {
+        nextStepClicked.value = false;
         currentStep.value--;
     }
     
@@ -54,9 +59,21 @@ const prevStepAction = ()=>{
     console.log(currentStep.value)
 }
 
-const nextStepAction = ()=>{
-    if(currentStep.value < 5){
-        currentStep.value++
+const nextStepAction = () => {
+    nextStepClicked.value = true;
+    console.log(nextStepClicked.value, 'next');
+    if (currentStep.value < 5 && userPlanChosen.name && userPlanChosen.email && userPlanChosen.phoneNumber) {
+        //check if the email has the right pattern
+        let emailRegexValidator = /^([a-zA-Z][\w+-]+(?:\.\w+)?)@([a-zA-Z][\w-]+(?:\.[a-zA-Z]{2,10})+)$/;
+        if (emailRegexValidator.test(userPlanChosen.email)) {
+            currentStep.value++;
+        } else {
+            return
+        }
+        
+    } else {
+        
+        console.error("please check and fill the input in the step 1")
     }
 
     //console.log(formStore.userPlanChosen)

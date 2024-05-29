@@ -10,11 +10,13 @@
                             <h3>{{ `${formStore.userPlanChosen.plan.name} (${monthlyOrYearly.monthlyYearly})` }}</h3>
                             <p @click="emit('changePlanAction')">Change</p>
                         </div>
-                        <p class="last-check__plan-price total-price-plan">{{ `$${monthlyOrYearlyPrice}/${monthlyOrYearly.moOrYr}` }}</p>
+                        <p class="last-check__plan-price total-price-plan">{{
+                            `$${monthlyOrYearlyPrice}/${monthlyOrYearly.moOrYr}` }}</p>
                     </div>
                     <div v-for="addOn in filteredAddOns" class="last-check__services">
                         <p class="last-check__service-title">{{ `${addOn.name} (${monthlyOrYearly.moOrYr})` }}</p>
-                        <p class="last-check__service-price">{{ isMonthly ? addOn.price : addOn.price * formStore.nbOfPayingMonthsPerYear }}</p>
+                        <p class="last-check__service-price">{{ isMonthly ? `+$${addOn.price}/mo` : `+$${addOn.price *
+                            formStore.nbOfPayingMonthsPerYear}/yr` }}</p>
                     </div>
                 </section>
                 <section class="last-check__total">
@@ -22,8 +24,8 @@
                     <p class="total__price"> {{ `+$${totalPrice}/${monthlyOrYearly.moOrYr}` }}</p>
 
                 </section>
-            </section>     
-            
+            </section>
+
         </card>
     </section>
 </template>

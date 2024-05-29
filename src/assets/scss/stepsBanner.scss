@@ -9,14 +9,14 @@
         grid-area: 1/1/2/2;
 
         @include for-tablet-landscape-up{
-            margin: auto 0 auto 30px;
+            margin: auto 0 auto 0;
             background: url('../imgs//bg-sidebar-desktop.svg');
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center bottom;
-            height: 97%;
-            border-radius: 30px;
-            
+            height: 95%;
+            border-radius: 15px;
+            grid-area: 1/1/-1/2;
         }
     }
 
@@ -25,6 +25,23 @@
         justify-content: center;
         padding-top: 30px;
         gap: 5%;
+
+        @include for-tablet-landscape-up {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+        }
+
+        &__step{
+            @include for-tablet-landscape-up{
+                padding: 0 2rem;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+
+        
 
         &__number{
             color: white;
@@ -43,7 +60,27 @@
         }
         &__titles{
             display: none;
+
+            @include for-tablet-landscape-up{
+                display: flex;
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
+            /* for step 1, step 2 in navbar */
+            & p {
+                color: $cool-gray;
+                text-transform: uppercase;
+                font-size: 0.8rem;
+            }
+
+            & h3 {
+                color: white;
+                font-weight: 500;
+                font-size: 1.1rem;
+            }
         }
+
     }
 }
 

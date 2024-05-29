@@ -6,18 +6,21 @@
                 <p class="form-cotainer__description">Add-ons help enhance your gaming experience.</p>
                 <section class="form-inputs step3" aria-label="step3-inputs">
                     <ul role="checkbox" class="checkbox__container">
-                        <li v-for="addOn in formStore.addOns" class="checkbox__item" :class="{'input-checked': addOn.isSelected}" >
+                        <li v-for="addOn in formStore.addOns" class="checkbox__item"
+                            :class="{'input-checked': addOn.isSelected}">
                             <label for="online-service" hidden></label>
-                            <input type="checkbox" name="online-service" :checked="addOn.isSelected"  @click=" emit('selectPlan',addOn )" aria-label="checkbox online-service choise">
+                            <input type="checkbox" name="online-service" :checked="addOn.isSelected"
+                                @click=" emit('selectPlan',addOn )" aria-label="checkbox online-service choise">
                             <div class="checkbox__service">
                                 <h3>{{addOn.name}}</h3>
                                 <p>{{ addOn.infos }}</p>
                             </div>
-                            <p class="price">{{`+$${addOn.price}/mo`}}</p>
+                            <p class="price">{{formStore.userPlanChosen.plan.isMonthly ?
+                                `+$${addOn.price}/mo` : `+$${addOn.price * formStore.nbOfPayingMonthsPerYear}/yr`}}</p>
                         </li>
                     </ul>
                 </section>
-            </section>     
+            </section>
         </card>
     </section>
 </template>
