@@ -54,20 +54,6 @@ let nextStepClicked = computed(() => {
     return props.nextStepClicked
 })
 
-
-
-
-/* watch the inputs and change */
-/* watch(
-    () => [userChoise.value.name, userChoise.value.email, userChoise.value.phoneNumber],
-    ([newName, newEmail, newPhoneNumber]) => {
-        if (newName || newEmail || newPhoneNumber ) {
-            emit('changeNextClickEvent');
-        }
-    }
-); */
-
-//https://stackoverflow.com/questions/76370713/how-to-use-pinia-store-getters-on-v-model-of-an-input LEGGERE per V-Model
 </script>
 
 <style lang="scss" scoped>

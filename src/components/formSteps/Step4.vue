@@ -8,7 +8,9 @@
                     <div class="last-check__plan">
                         <div class="last-check__info">
                             <h3>{{ `${formStore.userPlanChosen.plan.name} (${monthlyOrYearly.monthlyYearly})` }}</h3>
-                            <p @click="emit('changePlanAction')">Change</p>
+                            <!-- added @keydown to allow the click in keyboard navigation -->
+                            <p role="button" tabindex="0" @click="emit('changePlanAction')"
+                                @keydown="emit('changePlanAction')">Change</p>
                         </div>
                         <p class="last-check__plan-price total-price-plan">{{
                             `$${monthlyOrYearlyPrice}/${monthlyOrYearly.moOrYr}` }}</p>

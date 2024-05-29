@@ -54,14 +54,10 @@ const prevStepAction = ()=>{
         nextStepClicked.value = false;
         currentStep.value--;
     }
-    
-    //console.log(formStore.userPlanChosen)
-    console.log(currentStep.value)
 }
 
 const nextStepAction = () => {
     nextStepClicked.value = true;
-    console.log(nextStepClicked.value, 'next');
     if (currentStep.value < 5 && userPlanChosen.name && userPlanChosen.email && userPlanChosen.phoneNumber) {
         //check if the email has the right pattern
         let emailRegexValidator = /^([a-zA-Z][\w+-]+(?:\.\w+)?)@([a-zA-Z][\w-]+(?:\.[a-zA-Z]{2,10})+)$/;
@@ -75,9 +71,6 @@ const nextStepAction = () => {
         
         console.error("please check and fill the input in the step 1")
     }
-
-    //console.log(formStore.userPlanChosen)
-    console.log(currentStep.value)
 }
 /* Action from step 2 to choise the plan */
 
@@ -98,7 +91,6 @@ const choosePlanAction = (id:number)=>{
     
     });
 
-    console.log(formStore.userPlanChosen.plan)
 }
 
 /* Action from step two to cohise beetween monthly or yearly plan */
@@ -116,7 +108,6 @@ const chooseYearlyPlan = ()=>{
 const selectPlanAddOn = (payload:AddOnsInfo)=>{
     
     payload.isSelected = !payload.isSelected;
-    console.log(userPlanChosen.addOns)
 
     if(payload.isSelected){ 
         userPlanChosen.addOns.push(payload);  

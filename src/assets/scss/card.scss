@@ -261,6 +261,14 @@
 .form-inputs.step3 ul li input{
     margin: auto 0;
 
+    &:focus{
+        outline: 0.5 solid $marine-blue;
+    }
+                 &:focus,
+                 &:hover {
+                     outline: 0.5px solid $marine-blue;
+                 }
+    /* custom checkbox */
     &[type="checkbox"] {
         box-sizing: border-box;
         width: 20px;
@@ -273,6 +281,12 @@
         outline: none;
         transition: outline 0.1s;
         border: 1px solid $cool-gray;
+
+        &:focus {
+            outline: 0.5px solid $marine-blue;
+            }
+
+
       }
     
       &[type="checkbox"]:checked {
@@ -283,11 +297,14 @@
       &[type="checkbox"]:not(:disabled):checked {
     
         background-color: $purplish-blue;
+        /* custom image for checkbox */
         background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" xml:space="preserve"><path style="fill: white" d="M11.941,28.877l-11.941-11.942l5.695-5.696l6.246,6.246l14.364-14.364L32,8.818"/></svg>');
         background-size: 10px;
         background-repeat: no-repeat;
         background-position: center;
       }
+
+
 }
 
 

@@ -9,7 +9,7 @@
                         <li v-for="addOn in formStore.addOns" class="checkbox__item"
                             :class="{'input-checked': addOn.isSelected}">
                             <label for="online-service" hidden></label>
-                            <input type="checkbox" name="online-service" :checked="addOn.isSelected"
+                            <input type="checkbox" tabindex="0" name="online-service" :checked="addOn.isSelected"
                                 @click=" emit('selectPlan',addOn )" aria-label="checkbox online-service choise">
                             <div class="checkbox__service">
                                 <h3>{{addOn.name}}</h3>
@@ -36,9 +36,7 @@ const formStore = userInfo();
 
 
 onMounted(()=>{
-    /* const addOnsList = document.querySelectorAll('.checkbox__item input');  */
     formStore.userPlanChosen.addOns.push(formStore.addOns[0]);
-    console.log(formStore.userPlanChosen.addOns, 'test')
 });
 
 

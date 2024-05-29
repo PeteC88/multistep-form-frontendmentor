@@ -1,9 +1,9 @@
 <template>
-    <nav
-     class="steps-wrapper">
+    <nav class="steps-wrapper">
         <ul class="steps-container">
             <li class="steps-container__step">
-                <div class="steps-container__number" :class="{'steps-container__number--active': currentStep === 1}">
+                <div class="steps-container__number"
+                    :class="{'steps-container__number--active': props.currentStep === 1}">
                     <p>1</p>
                 </div>
                 <div class="steps-container__titles">
@@ -11,8 +11,9 @@
                     <h3>YOUR INFO</h3>
                 </div>
             </li>
-            <li class="steps-container__step" >
-                <div class="steps-container__number" :class="{'steps-container__number--active': currentStep === 2}">
+            <li class="steps-container__step">
+                <div class="steps-container__number"
+                    :class="{ 'steps-container__number--active': props.currentStep === 2}">
                     <p>2</p>
                 </div>
                 <div class="steps-container__titles">
@@ -21,7 +22,8 @@
                 </div>
             </li>
             <li class="steps-container__step">
-                <div class="steps-container__number" :class="{'steps-container__number--active': currentStep === 3}">
+                <div class="steps-container__number"
+                    :class="{ 'steps-container__number--active': props.currentStep === 3}">
                     <p>3</p>
                 </div>
                 <div class="steps-container__titles">
@@ -30,7 +32,8 @@
                 </div>
             </li>
             <li class="steps-container__step">
-                <div class="steps-container__number" :class="{'steps-container__number--active': currentStep === 4 || currentStep === 5}">
+                <div class="steps-container__number"
+                    :class="{ 'steps-container__number--active': props.currentStep === 4 || props.currentStep === 5}">
                     <p>4</p>
                 </div>
                 <div class="steps-container__titles">
@@ -45,7 +48,6 @@
 <script setup lang="ts">
 const props = defineProps(['currentStep'])
 
-console.log(props)
 </script>
 
 <style scoped>
