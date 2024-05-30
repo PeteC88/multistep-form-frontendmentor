@@ -49,6 +49,7 @@ form{
     grid-template-columns: 1fr;
     grid-template-rows: 155px 1fr 64px;
     border-radius: 10px;
+    
 
     @include for-tablet-landscape-up {
         padding: 0 20px;
@@ -61,13 +62,12 @@ form{
     }
 }
 
+//TODO change the container height in mobile landscape
+/* @media only screen and (orientation: landscape) {
 
-@media only screen and (orientation: landscape) {
-    /* Add your CSS rules here */
-    /* test for mobile */
     .container {
         position: relative;
         top:40svh;
        height: 180svh;
     }
-}
+} */
