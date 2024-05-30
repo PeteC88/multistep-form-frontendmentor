@@ -62,4 +62,12 @@ form{
 }
 
 
-
+@media only screen and (orientation: landscape) {
+    /* Add your CSS rules here */
+    /* test for mobile */
+    .container {
+        position: relative;
+        top:40svh;
+       height: 180svh;
+    }
+}
