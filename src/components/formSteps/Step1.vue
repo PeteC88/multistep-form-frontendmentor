@@ -65,7 +65,7 @@
             name="phone"
             placeholder="e.g. +1 234 567 890"
             pattern="[+]{1}[0-9]{10,}"
-            title=" use + for the prefix and then the number e.g. +1 234 567 890"
+            title="e.g. +1 234 567 890 min 11 digit max 20"
             v-model="userChoise.phoneNumber"
             minlengt="10"
             maxlength="20"

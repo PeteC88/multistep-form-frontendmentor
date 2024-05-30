@@ -71,13 +71,14 @@ const nextStepAction = () => {
     let emailRegexValidator =
       /^([a-zA-Z][\w+-]+(?:\.\w+)?)@([a-zA-Z][\w-]+(?:\.[a-zA-Z]{2,10})+)$/;
 
+    let phoneRegexValidator = /^(?:([\d()+])(?!\1+$)){10,20}$/;
     if (
       emailRegexValidator.test(userPlanChosen.email) &&
       userPlanChosen.name.length >= 3
     ) {
       if (
-        userPlanChosen.phoneNumber.length >= 10 &&
-        userPlanChosen.phoneNumber.length <= 20
+        userPlanChosen.phoneNumber.length >= 11 &&
+        phoneRegexValidator.test(userPlanChosen.phoneNumber)
       ) {
         currentStep.value++;
       }
