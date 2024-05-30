@@ -20,6 +20,13 @@ $large-desktop: 1800px;
    }
 }
 
+/* Media query for landscape device visualisation if the height of the screen is less then 600px */
+@mixin for-max-height-600px{
+  @media only screen and (max-height: $tablet-portrait) {
+    @content
+  }
+}
+
 
 @mixin for-tablet-portrait-up {
   @media (min-width: $tablet-portrait) {

@@ -60,14 +60,14 @@ form{
         grid-template-columns: 35% 65%;
         grid-template-rows: 1fr 80px;
     }
-}
 
-//TODO change the container height in mobile landscape
-/* @media only screen and (orientation: landscape) {
-
-    .container {
-        position: relative;
-        top:40svh;
-       height: 180svh;
+    /* Media query for landscape device visualisation if the height of the screen is less then 600px */
+    @include for-max-height-600px{
+        position: absolute;
+        top: 20px;
+        left: 0;
+        right: 0;
+        min-height: 600px;
     }
-} */
+}   
+
