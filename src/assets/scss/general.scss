@@ -64,10 +64,11 @@ form{
     /* Media query for landscape device visualisation if the height of the screen is less then 600px */
     @include for-max-height-600px{
         position: absolute;
-        top: 20px;
+        top:0;
         left: 0;
         right: 0;
-        min-height: 600px;
+        min-height: 700px;
+        margin-bottom: 100px;
     }
 }   
 
